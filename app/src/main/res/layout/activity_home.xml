@@ -8,9 +8,10 @@
     tools:context=".HomeActivity"
     android:id="@+id/navigationMenu">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <include
             android:layout_alignParentTop="true"
@@ -19,7 +20,14 @@
             android:layout_height="wrap_content"
             layout="@layout/action_bar"/>
 
-    </RelativeLayout>
+        <com.github.mikephil.charting.charts.CombinedChart
+            android:id="@+id/chart1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <include layout="@layout/activity_donut"/>
+
+    </LinearLayout>
 
 
     <com.google.android.material.navigation.NavigationView
@@ -29,6 +37,7 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/navigation_menu"/>
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
