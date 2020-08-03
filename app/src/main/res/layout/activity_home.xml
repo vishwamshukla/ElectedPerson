@@ -8,26 +8,226 @@
     tools:context=".HomeActivity"
     android:id="@+id/navigationMenu">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include
-            android:layout_alignParentTop="true"
-            android:id="@+id/actionBar"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/action_bar"/>
+            android:orientation="vertical">
 
-        <com.github.mikephil.charting.charts.CombinedChart
-            android:id="@+id/chart1"
-            android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            <include
+                android:layout_alignParentTop="true"
+                android:id="@+id/actionBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/action_bar"/>
 
-        <include layout="@layout/activity_donut"/>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginBottom="30dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_weight="1"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/activity_donut"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_marginStart="10dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:background="#ef5455"/>
+
+                            <TextView
+                                android:layout_marginStart="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pothole Reported"/>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_marginStart="10dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:background="#fad744"/>
+
+                            <TextView
+                                android:layout_marginStart="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pothole Fixed"/>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginBottom="30dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_weight="1"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/activity_donut1"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_marginStart="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:background="#104c91"/>
+
+                            <TextView
+                                android:layout_marginStart="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Active Worker"/>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_marginStart="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:background="#efc9af"/>
+
+                            <TextView
+                                android:layout_marginStart="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Active Citizen"/>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="30dp"
+                app:cardCornerRadius="5dp"
+                android:focusable="true">
+
+                <com.github.mikephil.charting.charts.CombinedChart
+                    android:id="@+id/chart1"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="5dp"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="30dp"
+                app:cardCornerRadius="5dp"
+                android:focusable="true">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Map will Display here"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="30dp"
+                app:cardCornerRadius="5dp"
+                android:focusable="true">
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/piechart"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center_horizontal"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <SeekBar
+                android:id="@+id/seekBar2"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:max="200"
+                android:paddingBottom="12dp" />
+
+            <SeekBar
+                android:id="@+id/seekBar1"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="35dp"
+                android:max="25"
+                android:paddingBottom="12dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 
     <com.google.android.material.navigation.NavigationView
