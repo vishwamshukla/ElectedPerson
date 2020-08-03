@@ -7,20 +7,31 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 
     private ActionBarDrawerToggle nToggle;
     NavigationView navigationView;
+
+    DatabaseReference locationRef;
+    GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +51,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
+
+        AtomicReference<SupportMapFragment> supportMapFragment = new AtomicReference<>((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map));
+        supportMapFragment.get().getMapAsync(HomeActivity.this);
+
+        locationRef = FirebaseDatabase.getInstance().getReference("Reports");
     }
 
     @Override
@@ -69,5 +85,40 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //                break;
 //        }
         return false;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+
+        mMap = googleMap;
+
+        locationRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                LatLng newLocation = new LatLng(
+                        dataSnapshot.child("mlat").getValue(Double.class),
+                        dataSnapshot.child("mlang").getValue(Double.class)
+                );
+                mMap.addMarker(new MarkerOptions()
+                        .position(newLocation)
+                        .title(dataSnapshot.getKey()));
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
     }
 }

@@ -8,9 +8,11 @@
     tools:context=".HomeActivity"
     android:id="@+id/navigationMenu">
 
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <include
             android:layout_alignParentTop="true"
@@ -19,7 +21,21 @@
             android:layout_height="wrap_content"
             layout="@layout/action_bar"/>
 
-    </RelativeLayout>
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/google_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
 
 
     <com.google.android.material.navigation.NavigationView
