@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Potholes+ (ER)</string>
+    <string name="app_name">Elected Representative+</string>
     <string name="open" translatable="false">Open</string>
     <string name="close" translatable="false">Close</string>
     <string name="title_activity_home2" translatable="false">Home2Activity</string>
